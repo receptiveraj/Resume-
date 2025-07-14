@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rajveer Singh - CV</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <style>
+    @media print {
+      .download-btn, .password-modal {
+        display: none !important;
+      }
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: #eef1f5;
+    }
+
+    .password-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.85);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+
+    .password-box {
+      background: white;
+      padding: 2rem;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .password-box input {
+      padding: 0.6rem;
+      width: 80%;
+      margin-bottom: 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .password-box button {
+      padding: 0.6rem 1.5rem;
+      background: royalblue;
+      color: white;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .cv {
+      width: 17cm;
+      min-height: 22cm;
+      margin: 1rem auto;
+      background: white;
+      padding: 1cm;
+      box-shadow: 0 0 20px rgba(0,0,0,0.1);
+      border-radius: 10px;
+    }
+
+    .header {
+      background: #007bff;
+      color: white;
+      text-align: center;
+      padding: 1rem;
+      border-radius: 8px;
+      font-size: 1.7rem;
+    }
+
+    .row {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .left {
+      flex: 2;
+    }
+
+    .right {
+      flex: 1;
+      text-align: right;
+    }
+
+    .right img {
+      max-width: 120px;
+      border-radius: 8px;
+      border: 2px solid #ccc;
+    }
+
+    h3 {
+      margin-top: 1.5rem;
+      color: #007bff;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 4px;
+    }
+
+    p, li {
+      font-size: 0.95rem;
+      margin: 0.3rem 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 0.5rem;
+    }
+
+    th, td {
+      padding: 10px;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    th {
+      background: #007bff;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f0f8ff;
+    }
+
+    tr:hover {
+      background-color: #d0e7ff;
+    }
+
+    .download-btn {
+      text-align: center;
+      margin: 1rem;
+    }
+
+    .download-btn button {
+      background: linear-gradient(135deg, #007bff, #4facfe);
+      color: white;
+      padding: 0.7rem 1.4rem;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .download-btn button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    ul {
+      margin: 0.5rem 0 0 1.2rem;
+    }
+
+    a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- 🔐 Password Modal -->
+<div class="password-modal" id="passwordModal">
+  <div class="password-box">
+    <h2>Enter Password</h2>
+    <input type="password" id="passwordInput" placeholder="Enter password">
+    <br>
+    <button onclick="checkPassword()">Unlock CV</button>
+    <div id="error" style="color:red; margin-top: 10px;"></div>
+  </div>
+</div>
+
+<!-- 📄 Download Button -->
+<div class="download-btn" id="downloadButton" style="display:none;">
+  <button onclick="downloadPDF()">📄 Download as PDF</button>
+</div>
+
+<!-- 📃 CV Content -->
+<div class="cv" id="cvContent" style="display:none;">
+  <div class="header">CV of Rajveer Singh</div>
+
+  <div class="row">
+    <div class="left">
+      <h3>Personal Information</h3>
+      <p>- Name: Rajveer Singh</p>
+      <p>- Father's Name: Mr. Harendra Bahadur Singh</p>
+      <p>- Mother's Name: Mrs. Seema Singh</p>
+      <p>- Date of Birth: 21 July 2002</p>
+      <p>- Email: nocomplaintme4@gmail.com</p>
+      <p>- Contact No: 8795450504</p>
+      <p>- Website: <a href="https://receptiveraj.github.io/R" target="_blank">receptiveraj.github.io/R</a></p>
+    </div>
+    <div class="right">
+      <img src="rajveer.jpg" alt="Rajveer Singh">
+    </div>
+  </div>
+
+  <h3>Objective</h3>
+  <p>To seek an opportunity in organization and venture to be a part of its growth through innovative and dedicated approach to the challenges and thereby upgrade my skills with hard work and sincerity.</p>
+
+  <h3>Educational Qualifications</h3>
+  <table>
+    <tr>
+      <th>Qualification</th>
+      <th>Percentage</th>
+      <th>Board/University</th>
+    </tr>
+    <tr>
+      <td>B.Sc</td>
+      <td>72%</td>
+      <td>SUKSN/ Siddarth University Kapilvastu</td>
+    </tr>
+    <tr>
+      <td>HSC Computer Science Additional</td>
+      <td>70%</td>
+      <td>CBSE Board / St. Xavier’s SR. Secondary Balrampur</td>
+    </tr>
+    <tr>
+      <td>SSC</td>
+      <td>88%</td>
+      <td>CBSE Board / Assumption PUB.SCH Gorakhpur</td>
+    </tr>
+  </table>
+
+  <h3>Work Experiences</h3>
+  <p>- Worked as a Pharmacy Assistant (2 years). Skilled in MS Word, Excel, PowerPoint.</p>
+  <p>- Worked as a Computer Operator (CSC, 3 years). Developed Web-Based Sales Management apps.</p>
+
+  <h3>Languages Known</h3>
+  <p>- Hindi, English</p>
+
+  <h3>Hobbies and Interests</h3>
+  <p>- Coding, reading magazines, travelling etc.</p>
+
+  <h3>Skill Set</h3>
+  <ul>
+    <li>Excellent written and verbal communication skills</li>
+    <li>Strong interpersonal abilities</li>
+    <li>Superior attention to detail</li>
+    <li>Effective time and priority management</li>
+    <li>Quick learner, flexible to new tech & trends</li>
+  </ul>
+</div>
+
+<!-- 🔧 Scripts -->
+<script>
+  const correctPassword = "rajveer123";
+
+  function checkPassword() {
+    const input = document.getElementById("passwordInput").value;
+    const error = document.getElementById("error");
+    if (input === correctPassword) {
+      document.getElementById("passwordModal").style.display = "none";
+      document.getElementById("cvContent").style.display = "block";
+      document.getElementById("downloadButton").style.display = "block";
+    } else {
+      error.textContent = "Incorrect password!";
+    }
+  }
+
+  function downloadPDF() {
+    const element = document.getElementById("cvContent");
+    const opt = {
+      margin: 0.5,
+      filename: 'Rajveer_Singh_CV.pdf',
+      image: { type: 'jpeg', quality: 0.98 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+  }
+</script>
+
+</body>
+</html>
